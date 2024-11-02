@@ -1,0 +1,15 @@
+.hero img {
+    height: 32rem;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+
+.navbar .nav-item .active {
+    color: #980db4;
+    font-weight: bold;
+}
+
+footer a {
+    text-decoration: none;
+}

@@ -1,0 +1,5 @@
+.hero img {
+    height: 32rem;
+    object-fit: cover;
+    object-position: bottom;
+}

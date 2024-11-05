@@ -15,6 +15,11 @@ class PageController extends Controller
         $page_title = "Contact  - " . config('app.name');
         return view('contact', compact('page_title'));
     }
+    public function shop()
+    {
+        $page_title = "Shop  - " . config('app.name');
+        return view('shop', compact('page_title'));
+    }
     public function product($name)  
     {   
 

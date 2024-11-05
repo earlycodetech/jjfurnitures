@@ -4,7 +4,6 @@
     object-position: bottom;
 }
 
-
 .navbar .nav-item .active {
     color: #980db4;
     font-weight: bold;
@@ -12,4 +11,41 @@
 
 footer a {
     text-decoration: none;
+}
+
+.page_hero {
+    height: 14rem;
+    display: grid;
+    place-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.page_hero h1 {
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: -3px 5px 5px #808080;
+    font-size: 3rem;
+}
+
+
+.product_card .box {
+    overflow: hidden;
+    position: relative;
+}
+
+.product_card img {
+    height: 16rem;
+}
+
+.product_card .category {
+    position: absolute;
+    background-color: #ffe600;
+    z-index: 9;
+    top: 8px;
+    right: 8px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
 }

@@ -28,7 +28,7 @@
                           </div>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">Shop</a>
+                          <a class="nav-link {{ request()->is('shop') ? 'active' : "" }}" href="{{ route('shop.page') }}">Shop</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link {{ request()->is('contact') ? 'active' : "" }}" href="{{ route('contact.page') }}">Contact</a>

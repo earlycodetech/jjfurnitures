@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('home.page');
 Route::get('contact', [PageController::class, 'contact'])->name('contact.page');
+Route::get('shop', [PageController::class, 'shop'])->name('shop.page');
 
-Route::get('product/{name}', [PageController::class, 'product'])->name('product.page');
+Route::get('shop/{name}', [PageController::class, 'product'])->name('product.page');
 
 Auth::routes();
 

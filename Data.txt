@@ -1,0 +1,7 @@
+Users  - name, email, password, phone, role[admin, user]
+
+Categories -  Name, Slug
+
+Products - name, price, sku (Stock Keeping Unit), stock, color, category
+
+Cart - user, product, quantity, price, address.

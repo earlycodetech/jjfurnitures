@@ -25,6 +25,7 @@
             @yield('content')
         </main>
         @include('partials.footer')
+        @include('sweetalert::alert')
     </div>
 </body>
 

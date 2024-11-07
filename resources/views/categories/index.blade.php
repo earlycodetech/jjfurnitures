@@ -16,24 +16,36 @@
                     <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
                         role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-                            <div class="modal-content">
+                            <form method="POST" action="{{ route('categories.store') }}" class="modal-content">
+                                @csrf
+
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalTitleId">
-                                       New Category
+                                        New Category
                                     </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Name</label>
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ old('name') }}" id="" aria-describedby="helpId"
+                                            placeholder="" />
+
+                                        @error('name')
+                                            <small id="helpId" class="text-danger fw-bold"> {{ $message }} </small>
+                                        @enderror
+                                    </div>
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                         Close
                                     </button>
-                                    <button type="button" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -58,23 +70,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="">
-                                    <td>Lorem.</td>
-                                    <td>date</td>
-                                    <td>date</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <a href="" class="btn btn-primary btn-sm">
-                                                <i class="fa-solid fa-edit"></i>
-                                            </a>
-                                            <form action="">
-                                                <button class="btn btn-danger btn-sm">
-                                                    <i class="fa-solid fa-trash-alt"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @forelse ($categories as $category)
+                                    <tr class="">
+                                        <td> {{ $category->name }} </td>
+                                        <td> 
+                                            {{ $category->created_at->format('M. jS Y') }} 
+                                        </td>
+                                        <td>
+                                            {{ $category->updated_at->diffForHumans() }}
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <a href="" class="btn btn-primary btn-sm">
+                                                    <i class="fa-solid fa-edit"></i>
+                                                </a>
+                                                <form action="">
+                                                    <button class="btn btn-danger btn-sm">
+                                                        <i class="fa-solid fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4"> No Catgories Added Yet</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

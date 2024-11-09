@@ -41,4 +41,24 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         return view('categories.edit', compact('category'));
     }
+    
+    public function  update(Request $request, $id)  {
+        $category = Category::findOrFail($id);
+        $data = $request->validate([
+            'name' => "required|string|unique:categories,name,{$id}",
+        ]);
+
+        $slug = Str::slug($data['name']);
+       
+        // Category::where('id', $id)->update([
+        //     'name' => $data['name'],
+        //     'slug' => $slug
+        // ]);
+        $category->update([
+            'name' => $data['name'],
+            'slug' => $slug
+        ]);
+        Alert::success('Updated', "Category updated successfully");
+        return back();
+    }
 }

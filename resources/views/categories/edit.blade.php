@@ -11,6 +11,9 @@
                             </h3>
 
                             <form action="{{ route('categories.update', $category->id) }}" method="post" class="mt-5">
+                                @csrf
+                                @method('PATCH')
+                                
                                 <div class="mb-3">
                                     <label for="" class="form-label">Name</label>
                                     <input type="text" class="form-control" name="name" id=""

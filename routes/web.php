@@ -19,3 +19,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('admin/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('admin/categories', [CategoryController::class, 'store'])->name('categories.store');
+
+Route::get('admin/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::patch('admin/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');

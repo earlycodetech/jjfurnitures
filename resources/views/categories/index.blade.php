@@ -81,7 +81,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
-                                                <a href="" class="btn btn-primary btn-sm">
+                                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fa-solid fa-edit"></i>
                                                 </a>
                                                 <form action="">

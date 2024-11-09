@@ -35,4 +35,10 @@ class CategoryController extends Controller
         Alert::success('Created', "Category created successfully");
         return back();
     }
+
+
+    public function  edit($id)  {
+        $category = Category::findOrFail($id);
+        return view('categories.edit', compact('category'));
+    }
 }

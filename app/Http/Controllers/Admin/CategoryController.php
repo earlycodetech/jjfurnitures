@@ -10,6 +10,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'check.admin']);
+    }
+
     public function index()
     {
 
@@ -59,6 +64,13 @@ class CategoryController extends Controller
             'slug' => $slug
         ]);
         Alert::success('Updated', "Category updated successfully");
+        return back();
+    }
+
+    public function destroy($id) {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        Alert::success('Deleted', "Category deleted successfully");
         return back();
     }
 }

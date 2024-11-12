@@ -84,7 +84,8 @@
                                                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fa-solid fa-edit"></i>
                                                 </a>
-                                                <form action="">
+                                                <form onsubmit="return confirm('Are you sure?')" action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                                    @csrf @method('DELETE')
                                                     <button class="btn btn-danger btn-sm">
                                                         <i class="fa-solid fa-trash-alt"></i>
                                                     </button>

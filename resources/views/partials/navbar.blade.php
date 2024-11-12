@@ -3,7 +3,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-warning-subtle">
           <div class="container-fluid">
               <a class="navbar-brand" href="{{ route('home.page') }}">
-                  <img src="assets/images/logo.png" width="40" alt="Logo">
+                  <img src="{{ asset('assets/images/logo.png') }}" width="40" alt="Logo">
               </a>
               <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
@@ -13,7 +13,8 @@
               <div class="collapse navbar-collapse" id="collapsibleNavId">
                   <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                       <li class="nav-item">
-                          <a class="nav-link {{ request()->is('/') ? 'active' : "" }}" href="{{ route('home.page') }}" aria-current="page">Home
+                          <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home.page') }}"
+                              aria-current="page">Home
                               <span class="visually-hidden">(current)</span></a>
                       </li>
                       <li class="nav-item">
@@ -28,10 +29,12 @@
                           </div>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link {{ request()->is('shop') ? 'active' : "" }}" href="{{ route('shop.page') }}">Shop</a>
+                          <a class="nav-link {{ request()->is('shop') ? 'active' : '' }}"
+                              href="{{ route('shop.page') }}">Shop</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link {{ request()->is('contact') ? 'active' : "" }}" href="{{ route('contact.page') }}">Contact</a>
+                          <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
+                              href="{{ route('contact.page') }}">Contact</a>
                       </li>
                       <form class="d-flex my-2 my-lg-0">
                           <input class="form-control me-sm-2" type="text" placeholder="Search" />
@@ -63,6 +66,15 @@
                               </a>
 
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                  @if (Auth::user()->role == 'admin')
+                                      <a href="{{ route('categories.index') }}" class="dropdown-item"> Categories </a>
+                                      <a href="{{ route('products.index') }}" class="dropdown-item"> Products </a>
+                                  @else
+                                      <a href="#" class="dropdown-item"> Cart </a>
+                                  @endif
+
+
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                       onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

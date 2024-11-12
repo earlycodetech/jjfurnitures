@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::post('admin/categories', [CategoryController::class, 'store'])->name('cat
 Route::get('admin/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::patch('admin/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('admin/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+Route::resource('admin/products', ProductsController::class)->except(['show'])->middleware(['auth', 'check.admin']);

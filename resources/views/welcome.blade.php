@@ -70,7 +70,7 @@
                                 </p>
 
                                 <div class="mt-3">
-                                    <a href="" class="btn btn-warning btn-sm">
+                                    <a href="{{ route('product.page', $product->sku) }}" class="btn btn-warning btn-sm">
                                         View
                                     </a>
 

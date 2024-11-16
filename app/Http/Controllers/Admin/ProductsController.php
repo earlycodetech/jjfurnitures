@@ -122,11 +122,11 @@ class ProductsController extends Controller
                 'image' => $fileName,
                 'description' => $data['description']
             ]);
-    
-            if (File::exists(public_path('uploads/'. $oldFile))) {
+
+            if (File::exists(public_path('uploads/' . $oldFile))) {
                 File::delete(public_path('uploads/' . $oldFile));
             }
-        }else{
+        } else {
             Product::where('sku', $sku)->update([
                 'category_id' => $data['category'] ? $data['category'] : $product->category_id,
                 'name' => $data['name'],
@@ -146,8 +146,22 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $sku)
     {
-        //
+        $product = Product::where('sku',  $sku)->firstOrFail();
+
+        $oldFile = $product->image;
+
+        if ($product->delete()) {
+
+            if (File::exists(public_path('uploads/' . $oldFile))) {
+                File::delete(public_path('uploads/' . $oldFile));
+            }
+
+            Alert::success("Product Deleted");
+        } else {
+            Alert::error("Failed to delete product");
+        }
+        return back();
     }
 }

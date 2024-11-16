@@ -27,6 +27,11 @@
                                     <a href="{{ route('products.edit', $product->sku) }}" class="btn btn-warning btn-sm">
                                         Edit
                                     </a>
+
+                                    <form class="d-inline" onsubmit="return confirm('Are you sure you want to delete this product?')" action="{{ route('products.destroy', $product->sku) }}" method="post">
+                                        @csrf @method('DELETE')
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

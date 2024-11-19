@@ -17,8 +17,9 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('users')->cascadeOnDelete();
             $table->decimal('amount', 8,2);
             $table->string('ref');
-            $table->enum('status', ['placed','shipped','delivered'])->default('placed');
+            $table->enum('status', ['added', 'placed','shipped', 'canceled', 'delivered'])->default('added');
             $table->mediumText('address');
+            $table->date('order_date')->nullable();
             $table->date('delivery_date')->nullable();
             $table->timestamps();
         });

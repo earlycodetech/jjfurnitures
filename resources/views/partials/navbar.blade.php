@@ -36,15 +36,22 @@
                           <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
                               href="{{ route('contact.page') }}">Contact</a>
                       </li>
-                      <form action="{{ route('shop.page') }}" class="d-flex my-2 my-lg-0">
-                          <input class="form-control me-sm-2" name="search" type="text" placeholder="Search" />
-                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                              Search
-                          </button>
-                      </form>
                   </ul>
                   <!-- Right Side Of Navbar -->
                   <ul class="navbar-nav ms-auto">
+                      <li class="nav-item">
+                          {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Cart') }}</a> --}}
+                          <a href="{{ route('cart.page') }}" class="nav-link position-relative me-3">
+                              <i class="fa-solid fa-shopping-cart"></i>
+                              @auth
+                                  <span
+                                      class="position-absolute top-0 start-100 translate-middle text-bg-danger d-grid border border-light rounded-circle"
+                                      style="width: 20px; height: 20px; place-content: center;">
+                                      <small class="small" style="font-size: 10px;">2</small>
+                                  </span>
+                              @endauth
+                          </a>
+                      </li>
                       <!-- Authentication Links -->
                       @guest
                           @if (Route::has('login'))
@@ -70,8 +77,10 @@
                                   @if (Auth::user()->role == 'admin')
                                       <a href="{{ route('categories.index') }}" class="dropdown-item"> Categories </a>
                                       <a href="{{ route('products.index') }}" class="dropdown-item"> Products </a>
+                                      <a href="{{ route('orders.index') }}" class="dropdown-item"> Orders </a>
                                   @else
-                                      <a href="#" class="dropdown-item"> Cart </a>
+                                      <a href="{{ route('cart.page') }}" class="dropdown-item">My Cart </a>
+                                      <a href="{{ route('orders.page') }}" class="dropdown-item">My Orders </a>
                                   @endif
 
 
@@ -87,6 +96,12 @@
                               </div>
                           </li>
                       @endguest
+                      <form action="{{ route('shop.page') }}" class="d-flex ms-auto my-2 my-lg-0">
+                          <input class="form-control me-sm-2" name="search" type="text" placeholder="Search" />
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                              Search
+                          </button>
+                      </form>
                   </ul>
               </div>
           </div>

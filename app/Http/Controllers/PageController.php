@@ -18,6 +18,16 @@ class PageController extends Controller
         $page_title = "Contact  - " . config('app.name');
         return view('contact', compact('page_title'));
     }
+    public function cart()
+    {
+        $page_title = "My Cart  - " . config('app.name');
+        return view('shopping.cart', compact('page_title'));
+    }
+    public function orders()
+    {
+        $page_title = "My Orders  - " . config('app.name');
+        return view('shopping.orders', compact('page_title'));
+    }
     public function shop(Request $request)
     {
         $searchWord = $request->input('search');

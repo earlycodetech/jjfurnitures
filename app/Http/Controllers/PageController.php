@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class PageController extends Controller
     public function welcome()
     {
         $products = Product::latest()->limit(4)->get();
-        return view('welcome', compact('products'));
+        $gallery = Gallery::latest()->limit(5)->get();
+        return view('welcome', compact('products', 'gallery'));
     }
 
     public function contact()

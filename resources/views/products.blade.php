@@ -37,8 +37,13 @@
                                 </ul>
                             </div>
                         </div>
+                        @error('product')
+                            <span class="small fw-bold text-danger">{{ $message }}</span>
+                        @enderror
                         <div class="my-4">
-                            <form action="" method="post">
+                            <form action="{{ route('cart.add') }}" method="post">
+                                @csrf
+                                <input type="hidden" value="{{ $product->id }}" name="product">
                                 <button class="btn btn-success ">
                                     <i class="fa-solid fa-shopping-cart"></i> Add to Cart
                                 </button>

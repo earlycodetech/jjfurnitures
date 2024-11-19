@@ -10,8 +10,10 @@ class Cart extends Model
         'user_id',
         'product_id',
         'amount',
+        'quantity',
         'status',
         'address',
+        'order_date',
         'delivery_date',
         'ref'
     ];

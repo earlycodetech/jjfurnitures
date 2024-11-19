@@ -74,7 +74,7 @@
                                         View
                                     </a>
 
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -89,6 +89,7 @@
 
 
     <!-- Gallery Starts -->
+    @if (count($gallery) > 0)        
     <section>
         <div class="container mt-5">
             <p class="h1 mb-5 text-end">
@@ -98,27 +99,24 @@
 
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <img src="{{ asset('assets/images/img-1.jpg') }}" alt="Gal 1" class="w-100">
+                    <img src="{{ asset('uploads/gallery/' . $gallery->first()->image) }}" alt="Gal 1" class="w-100">
                 </div>
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <img src="{{ asset('assets/images/img-2.jpg') }}" alt="Gal 1" class="w-100">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <img src="{{ asset('assets/images/img-3.jpg') }}" alt="Gal 1" class="w-100">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <img src="{{ asset('assets/images/img-4.jpg') }}" alt="Gal 1" class="w-100">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <img src="{{ asset('assets/images/img-1.jpg') }}" alt="Gal 1" class="w-100">
-                        </div>
+                        @foreach ($gallery as $image)
+                            @if ($gallery->first()->id != $image->id)
+                                <div class="col-md-6 mb-4">
+                                    <img src="{{ asset('uploads/gallery/' . $image->image) }}" alt="Gal 1" class="w-100">
+                                </div>
+                            @endif
+                        @endforeach
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- Gallery Ends -->
 
     <!-- Products Starts -->
@@ -142,7 +140,7 @@
                                 $ 29.9
                             </p>
 
-                             <div class="mt-3">
+                            <div class="mt-3">
                                 <a href="#" class="btn btn-warning btn-sm">
                                     Buy Now
                                 </a>
@@ -161,7 +159,7 @@
                             <p class="card-text">
                                 $ 29.9
                             </p>
-                             <div class="mt-3">
+                            <div class="mt-3">
                                 <a href="#" class="btn btn-warning btn-sm">
                                     Buy Now
                                 </a>
@@ -180,7 +178,7 @@
                             <p class="card-text">
                                 $ 29.9
                             </p>
-                             <div class="mt-3">
+                            <div class="mt-3">
                                 <a href="#" class="btn btn-warning btn-sm">
                                     Buy Now
                                 </a>
@@ -199,7 +197,7 @@
                             <p class="card-text">
                                 $ 29.9
                             </p>
-                             <div class="mt-3">
+                            <div class="mt-3">
                                 <a href="#" class="btn btn-warning btn-sm">
                                     Buy Now
                                 </a>

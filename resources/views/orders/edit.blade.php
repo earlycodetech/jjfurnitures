@@ -49,13 +49,12 @@
 
                                         <ul class="list-inline items d-flex justify-content-between">
                                             <li class="list-inline-item items-list">
-                                                <p class="py-1 px-2 rounded active">
+                                                <p class="py-1 px-2 rounded {{ $order->status == 'placed' ? 'active' : '' }}">
                                                     Placed</p class="py-1 px-2 rounded">
                                             </li>
                                             <li class="list-inline-item items-list">
-                                                <p class="py-1 px-2 rounded">
-                                                    Shipped</p class="py-1 px-2 rounded text-white"
-                                                    style="background-color: #f37a27;">
+                                                <p class="py-1 px-2 rounded active">
+                                                    Shipped</p class="py-1 px-2 rounded">
                                             </li>
                                             <li class="list-inline-item items-list text-end" style="margin-right: 8px;">
                                                 <p style="margin-right: -8px;">Canceled</p>

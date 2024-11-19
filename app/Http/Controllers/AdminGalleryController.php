@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Cart;
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller
+class AdminGalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $orders = Cart::where('status', '!=', 'added')->latest()->paginate(5);
-        return view('orders.index', compact('orders'));
+        //
     }
 
     /**
@@ -38,7 +35,7 @@ class OrdersController extends Controller
      */
     public function show(string $id)
     {
-        
+        //
     }
 
     /**
@@ -46,8 +43,7 @@ class OrdersController extends Controller
      */
     public function edit(string $id)
     {
-        $order = Cart::findOrFail($id);
-        return view('orders.edit', compact('order'));
+        //
     }
 
     /**

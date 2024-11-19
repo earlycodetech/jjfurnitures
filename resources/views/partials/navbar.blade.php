@@ -47,7 +47,9 @@
                                   <span
                                       class="position-absolute top-0 start-100 translate-middle text-bg-danger d-grid border border-light rounded-circle"
                                       style="width: 20px; height: 20px; place-content: center;">
-                                      <small class="small" style="font-size: 10px;">2</small>
+                                      <small class="small" style="font-size: 10px;">
+                                        {{ Auth::user()->cartItems->count() }}
+                                      </small>
                                   </span>
                               @endauth
                           </a>
@@ -76,6 +78,7 @@
 
                                   @if (Auth::user()->role == 'admin')
                                       <a href="{{ route('categories.index') }}" class="dropdown-item"> Categories </a>
+                                      <a href="{{ route('gallery.index') }}" class="dropdown-item"> Gallery </a>
                                       <a href="{{ route('products.index') }}" class="dropdown-item"> Products </a>
                                       <a href="{{ route('orders.index') }}" class="dropdown-item"> Orders </a>
                                   @else

@@ -49,6 +49,6 @@ class User extends Authenticatable
 
     public function cartItems()
     {
-        return $this->hasMany(Cart::class, 'user_id')->latest();
+        return $this->hasMany(Cart::class, 'user_id')->where('status', 'added')->latest();
     }
 }
